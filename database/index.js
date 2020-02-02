@@ -1,37 +1,41 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/fec-primary-player', {useNewUrlParser: true});
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-let song = mongoose.model('Song', {
-  author:  {
+const connection = mongoose.connect('mongodb://localhost:27017/fec-primary-player', { useNewUrlParser: true });
+
+
+const songSchema = mongoose.Schema({
+  _id: Number,
+  author: {
     type: String,
   },
   title: {
-    type: String
+    type: String,
   },
   genre: {
-    type: String
+    type: String,
   },
   tags: {
-    type: String
+    type: String,
   },
   artwork_url: {
-    type: String
+    type: String,
   },
   audio_file_path: {
-    type: String
+    type: String,
   },
   like_count: {
-    type: Number
+    type: Number,
   },
   play_count: {
-    type: Number
+    type: Number,
   },
   repost_count: {
-    type: Number
+    type: Number,
   },
-  // timestamps: {
-  //   createdAt: 'uploaded_at'
-  // }
 });
+songSchema.plugin(AutoIncrement);
+const song = mongoose.model('Song', songSchema);
+
 
 module.exports = song;
