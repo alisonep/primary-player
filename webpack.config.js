@@ -1,4 +1,5 @@
 const path = require('path');
+
 const source = path.join(__dirname, '/client/src');
 const destination = path.join(__dirname, '/client/dist');
 
@@ -11,13 +12,13 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.jsx$/,
-        include: source,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-react'],
-        },
-      }
-    ]
-  }
+      test: /\.jsx$/,
+      include: source,
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-react'],
+      },
+    },
+    ],
+  },
 };

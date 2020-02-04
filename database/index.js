@@ -33,7 +33,7 @@ const songSchema = mongoose.Schema({
   repost_count: {
     type: Number,
   },
-});
+}, { timestamps: true });
 songSchema.plugin(AutoIncrement);
 const song = mongoose.model('Song', songSchema);
 

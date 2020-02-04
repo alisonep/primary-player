@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "description": "Front End Capstone - primary player service for Sound Cloud",
   "main": "index.js",
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ]
+  },
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "serve": "nodemon server/index.js",
     "build-sass": "node-sass -w client/src/css -o client/dist",
     "build-react": "webpack --watch",
-    "seed": "./database/seed.js"
+    "seed": "node ./database/seed.js"
   },
   "repository": {
     "type": "git",
@@ -21,18 +29,31 @@
   },
   "homepage": "https://github.com/Messier-51/primary-player#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "moment": "^2.24.0",
     "mongoose": "^5.8.9",
+    "mongoose-sequence": "^5.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "wavesurfer": "^1.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "faker": "^4.1.0",
+    "jest": "^25.1.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
     "webpack": "^4.41.5",
