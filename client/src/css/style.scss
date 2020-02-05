@@ -173,11 +173,26 @@ table {
     grid-row: 2;
     &__social-bar {
       position: relative;
+      min-height: 20px;
       &-icon {
         position: absolute;
-        left: 50px;
         height: 20px;
         width: 20px;
+        &:hover {
+          z-index: 3;
+        }
+        & ~ .userDetails {
+          display:none;
+          font-size: 12px;
+          color: #fff;
+          margin-top: 30px;
+          padding-left: 5px;
+          border-left: 2px solid rgba(255,85,0,.95);
+        }
+        &:hover ~ .userDetails {
+          display: inline-block;
+          position: absolute;
+        }
       }
     }
   }
