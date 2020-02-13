@@ -10,7 +10,6 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-
 // retrieve all songs
 app.get('/songs', songController.getSongs);
 

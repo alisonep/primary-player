@@ -17,37 +17,42 @@ class PrimaryPlayer extends React.Component {
       genre: 'Electronic',
       image: 'https://i1.sndcdn.com/artworks-000621689221-np6gn7-t500x500.jpg',
       songUrl: 'http://d1vgv8e3fkby3.cloudfront.net/song1.mp3',
+      songId: (location.href.substring(location.href.lastIndexOf('/') + 1) || 1),
       // songUrl: 'http://localhost:3004/sample.mp3',
-      users: [{
-        _id: '5e3a3d19ced3f726582ce410', comment_id: 47, song_id: 21, user_id: 37, user_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/teddyzetterlund/128.jpg', message: 'Kentucky radical Handmade Granite Shoes PCI Central Steel Savings Account Total', audio_position: 101, __v: 0,
-      }, {
-        _id: '5e3a3d19ced3f726582ce45a', comment_id: 121, song_id: 21, user_id: 95, user_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/herrhaase/128.jpg', message: 'Director Soft transform', audio_position: 107, __v: 0,
-      }, {
-        _id: '5e3a3d19ced3f726582ce473', comment_id: 146, song_id: 21, user_id: 58, user_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/adityasutomo/128.jpg', message: 'Trafficway panel synergies workforce transmit tertiary Indian Rupee Illinois Euro system auxiliary Versatile Synchronised Small Internal Texas Rubber Shirt Bedfordshire reinvent Refined Metal Chips Wooden withdrawal optical', audio_position: 19, __v: 0,
-      }, {
-        _id: '5e3a3d19ced3f726582ce491', comment_id: 176, song_id: 21, user_id: 51, user_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/leandrovaranda/128.jpg', message: 'bandwidth Legacy connecting clear-thinking New York Shoals Fantastic Engineer e-business PCI open system EXE Berkshire Engineer Legacy invoice Unbranded Wooden Chair markets ADP architectures Markets virtual Bolivia Mountain encoding', audio_position: 115, __v: 0,
-      }, {
-        _id: '5e3a3d19ced3f726582ce4fc', comment_id: 283, song_id: 21, user_id: 100, user_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/chadami/128.jpg', message: 'intranet Paradigm Avon neural-net Planner SAS Analyst Jewelery magnetic e-markets Awesome Hills bypassing virtual Intelligent Plastic Bike ADP capacitor client-driven Granite', audio_position: 17, __v: 0,
-      }, {
-        _id: '5e3a3d19ced3f726582ce52f', comment_id: 334, song_id: 21, user_id: 43, user_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/aiiaiiaii/128.jpg', message: 'Antigua and Barbuda Cuban Peso Peso Convertible Checking Account solutions synergize Refined Vista Court Practical Benin District Global Iranian Rial alliance empowering initiative', audio_position: 30, __v: 0,
-      }],
+      users: [],
     };
   }
 
   componentDidMount() {
-
-  }
-
-  getSong() {
-    axios.get('http://localhost:3004/songs/2')
+    axios.get('http://localhost:8080/comment/88')
       .then((response) => {
         // handle success
         console.log(response);
+        const returnedComments = response.data;
+        this.setState({
+          users: returnedComments,
+        });
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+      .finally(() => {
+        // always executed
+      });
+  }
+
+  getSong(loadSongCallback) {
+    axios.get('http://localhost:3004/songs/' + this.state.songId)
+      .then((response) => {
+        // handle success
+        console.log("cheese", response);
         const returnedSong = response.data;
         this.setState({
           author: returnedSong.author,
           title: returnedSong.title,
           uploadTime: returnedSong.createdAt,
+          songUrl: returnedSong.audio_file_path,
           genre: returnedSong.genre,
           image: returnedSong.artwork_url,
         });
@@ -58,6 +63,7 @@ class PrimaryPlayer extends React.Component {
       })
       .finally(() => {
         // always executed
+        loadSongCallback();
       });
   }
 

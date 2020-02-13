@@ -25,8 +25,9 @@ class Wave extends React.Component {
       height: 100,
     });
     this.setState({ wavesurfer }, function () {
-      this.state.wavesurfer.load(this.props.songUrl);
-      this.props.getSong();
+      this.props.getSong( () => {
+        this.state.wavesurfer.load(this.props.songUrl);
+      });
     });
     wavesurfer.on('ready', () => {
       console.log('song is ready');

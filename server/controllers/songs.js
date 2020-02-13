@@ -1,6 +1,7 @@
 const Song = require('../../database/index');
 
 module.exports.getSong = (req, res) => {
+  console.log("cheese", req.params.id);
   Song.findById(req.params.id)
     .then((song) => {
       res.send(song);
