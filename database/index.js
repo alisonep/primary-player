@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
+const path = require('path');
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '../.env')
+});
 
-const connection = mongoose.connect('mongodb://localhost:27017/fec-primary-player', { useNewUrlParser: true });
+const connection = mongoose.connect(process.env.CONNSTRING, { useNewUrlParser: true });
 
 
 const songSchema = mongoose.Schema({

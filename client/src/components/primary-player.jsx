@@ -27,7 +27,7 @@ class PrimaryPlayer extends React.Component {
     axios.get('http://localhost:8080/comment/88')
       .then((response) => {
         // handle success
-        console.log(response);
+        console.log("comments: ", response.data);
         const returnedComments = response.data;
         this.setState({
           users: returnedComments,
