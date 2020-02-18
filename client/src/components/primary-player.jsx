@@ -5,6 +5,9 @@ const React = require('react');
 const ReactDom = require('react-dom');
 const axios = require('axios');
 const moment = require('moment');
+const localUrl = 'http://localhost:3004';
+const prodUrl = 'http://ec2-52-41-170-203.us-west-2.compute.amazonaws.com:3004';
+const API_URL = (window.location.host === localhost:3004) ? localUrl : prodUrl;
 
 class PrimaryPlayer extends React.Component {
   constructor(props) {
@@ -43,7 +46,7 @@ class PrimaryPlayer extends React.Component {
   }
 
   getSong(loadSongCallback) {
-    axios.get('http://localhost:3004/songs/' + this.state.songId)
+    axios.get(API_URL + '/songs/' + this.state.songId)
       .then((response) => {
         // handle success
         console.log("cheese", response);
