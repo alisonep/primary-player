@@ -5,6 +5,7 @@ const React = require('react');
 const ReactDom = require('react-dom');
 const axios = require('axios');
 const moment = require('moment');
+
 const localUrl = 'http://localhost:3004';
 const prodUrl = 'http://ec2-52-41-170-203.us-west-2.compute.amazonaws.com:3004';
 const API_URL = (window.location.host === 'localhost:3004') ? localUrl : prodUrl;
@@ -27,10 +28,10 @@ class PrimaryPlayer extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/comment/88')
+    axios.get('http://ec2-34-220-99-82.us-west-2.compute.amazonaws.com:8080/comment/88')
       .then((response) => {
         // handle success
-        console.log("comments: ", response.data);
+        console.log('comments: ', response.data);
         const returnedComments = response.data;
         this.setState({
           users: returnedComments,
@@ -46,10 +47,10 @@ class PrimaryPlayer extends React.Component {
   }
 
   getSong(loadSongCallback) {
-    axios.get(API_URL + '/songs/' + this.state.songId)
+    axios.get(`${API_URL}/songs/${this.state.songId}`)
       .then((response) => {
         // handle success
-        console.log("cheese", response);
+        console.log('cheese', response);
         const returnedSong = response.data;
         this.setState({
           author: returnedSong.author,
