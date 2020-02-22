@@ -28,7 +28,7 @@ class PrimaryPlayer extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://ec2-34-220-99-82.us-west-2.compute.amazonaws.com:8080/comment/88')
+    axios.get(`http://ec2-34-220-99-82.us-west-2.compute.amazonaws.com:8080/comment/${this.state.songId}`)
       .then((response) => {
         // handle success
         console.log('comments: ', response.data);
