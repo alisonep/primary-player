@@ -30,12 +30,25 @@ class Wave extends React.Component {
       });
     });
     wavesurfer.on('ready', () => {
-      console.log('song is ready');
+      // console.log('song is ready');
+      let duration = this.state.wavesurfer.backend.getDuration();
       this.setState({
-        songLength: this.state.wavesurfer.backend.getDuration(),
+        songLength: duration,
         waveWidth: this.waveRef.current.offsetWidth,
       });
+      this.props.updateDuration(duration);
     });
+    wavesurfer.on('audioprocess', (time) => {
+      this.props.updatePlayedPercentage(time, this.state.wavesurfer.backend.getDuration());
+      this.props.updateCurrentTime(time);
+      // wavesurfer.params.container.style.opacity = 0.9;
+    });
+    wavesurfer.on('finish', () => {
+      this.props.updatePlayedPercentage(0, this.state.wavesurfer.backend.getDuration());
+      this.props.updateCurrentTime(0);
+      this.props.toggleSong();
+    });
+
   }
 
   componentDidUpdate() {
@@ -48,7 +61,7 @@ class Wave extends React.Component {
 
   calculateLeftSocialIconPlacement(secondMarker, songLength) {
     const leftLocation = (secondMarker * this.state.waveWidth) / this.state.songLength;
-    console.log(this.state.waveWidth, leftLocation, this.state.songLength);
+    // console.log(this.state.waveWidth, leftLocation, this.state.songLength);
     return leftLocation;
   }
 

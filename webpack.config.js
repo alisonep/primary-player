@@ -4,7 +4,7 @@ const source = path.join(__dirname, '/client/src');
 const destination = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: `${source}/index.jsx`,
   output: {
     filename: 'bundle.js',
