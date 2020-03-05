@@ -2,23 +2,23 @@ const faker = require('faker');
 const Song = require('./index');
 
 let songUrls = [
-  'fectracks.s3-us-west-2.amazonaws.com/BunkerSIM.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Chronicles+of+Fate.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Dragomon+Hunters+Release+Trailer.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Electro+City.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Gem+Hunters+Boss.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Gem+Hunters+Overworld.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Heroes-+Assault.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Heroes-+Base.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Invasion.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Nauticrawl+Theme.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Revelations+Trailer+Full.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/SodaDunegeon4.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/SodaDungen.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/SodaDungeon2.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/SodaDungeon3.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Warlords+Cinematic+Trailer.mp3',
-  'fectracks.s3-us-west-2.amazonaws.com/Wild+Battle.mp3'
+  'http://d2kzfado6qqgq8.cloudfront.net/BunkerSIM.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Chronicles+of+Fate.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Dragomon+Hunters+Release+Trailer.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Electro+City.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Gem+Hunters+Boss.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Gem+Hunters+Overworld.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Heroes-+Assault.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Heroes-+Base.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Invasion.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Nauticrawl+Theme.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Revelations+Trailer+Full.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/SodaDunegeon4.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/SodaDungen.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/SodaDungeon2.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/SodaDungeon3.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Warlords+Cinematic+Trailer.mp3',
+  'http://d2kzfado6qqgq8.cloudfront.net/Wild+Battle.mp3'
 ];
 
 function randomBetween(min, max) {
