@@ -1,5 +1,5 @@
 const faker = require('faker');
-const Song = require('./index');
+const Song = require('./mongodb');
 
 let songUrls = [
   'http://d2kzfado6qqgq8.cloudfront.net/BunkerSIM.mp3',
