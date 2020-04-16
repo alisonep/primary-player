@@ -46,4 +46,4 @@ songSchema.plugin(AutoIncrement);
 const song = mongoose.model('Song', songSchema);
 
 
-module.exports = song;
+module.exports = { song, connection };

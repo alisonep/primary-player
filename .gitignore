@@ -1,4 +1,5 @@
 node_modules
+bulkdata.csv
 # Logs
 logs
 *.log
