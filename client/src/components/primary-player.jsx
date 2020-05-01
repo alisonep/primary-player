@@ -8,7 +8,7 @@ const axios = require('axios');
 const moment = require('moment');
 
 const localUrl = 'http://localhost:3001';
-const prodUrl = 'http://ec2-52-25-37-101.us-west-2.compute.amazonaws.com:3001/';
+const prodUrl = 'http://ec2-52-25-37-101.us-west-2.compute.amazonaws.com:3001';
 const API_URL = (window.location.host === 'localhost:3001' || window.location.host === 'localhost:3005') ? localUrl : prodUrl;
 
 class PrimaryPlayer extends React.Component {
