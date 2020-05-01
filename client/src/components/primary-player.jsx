@@ -7,9 +7,9 @@ const ReactDom = require('react-dom');
 const axios = require('axios');
 const moment = require('moment');
 
-const localUrl = 'http://localhost:3004';
+const localUrl = 'http://localhost:3001';
 const prodUrl = 'http://ec2-52-41-170-203.us-west-2.compute.amazonaws.com:3004';
-const API_URL = (window.location.host === 'localhost:3004') ? localUrl : prodUrl;
+const API_URL = (window.location.host === 'localhost:3001' || window.location.host === 'localhost:3005') ? localUrl : prodUrl;
 
 class PrimaryPlayer extends React.Component {
   constructor(props) {
@@ -32,28 +32,29 @@ class PrimaryPlayer extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://ec2-34-220-99-82.us-west-2.compute.amazonaws.com:8080/comment/${this.state.songId}`)
-      .then((response) => {
-        // handle success
-        // console.log('comments: ', response.data);
-        const returnedComments = response.data;
-        this.setState({
-          users: returnedComments,
-        });
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      })
-      .finally(() => {
-        // always executed
-      });
+    // axios.get(`http://ec2-34-220-99-82.us-west-2.compute.amazonaws.com:8080/comment/${this.state.songId}`)
+    //   .then((response) => {
+    //     // handle success
+    //     // console.log('comments: ', response.data);
+    //     const returnedComments = response.data;
+    //     this.setState({
+    //       users: returnedComments,
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     // handle error
+    //     console.log(error);
+    //   })
+    //   .finally(() => {
+    //     // always executed
+    //   });
   }
 
   getSong(loadSongCallback) {
     axios.get(`${API_URL}/songs/${this.state.songId}`)
       .then((response) => {
         // handle success
+        // debugger;
         const returnedSong = response.data;
         this.setState({
           author: returnedSong.author,

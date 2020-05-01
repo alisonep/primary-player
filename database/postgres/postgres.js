@@ -5,12 +5,10 @@ const dotenv = require('dotenv').config();
 const password = process.env.POSTGRESKEY;
 const environment = process.env.NODE_ENV;
 
-const prodhost = '';
-const devhost = 'localhost';
-const host = environment === 'production' ? prodhost : devhost;
+const host = process.env.HOST;
 
 const sequelize = new Sequelize('soundcloud', 'postgres', password, {
-  host: 'localhost',
+  host: host,
   dialect: 'postgres',
 });
 

@@ -1,5 +1,8 @@
 node_modules
 bulkdata.csv
+artilleryconfig.yaml
+newrelic.js
+finalconvo.txt
 # Logs
 logs
 *.log

@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -28,5 +29,8 @@ app.get('/songs/:id', songController.getSong);
 // // delete one song
 // app.post('/removeSong/:id', songController.removeSong);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 app.listen(process.env.PORT, () => console.log(`serving on port ${process.env.PORT}!`));
